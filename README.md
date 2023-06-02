@@ -6,15 +6,22 @@ The switch (change) will reset the board back to no lights lit.
 # User Inputs/Outputs
 
 ## Input: D4(buttonL) - Player 1 score keeping button
+
 Output: neo pixel 0-4 will flash green then neo pixel 0 will remain lit and every win after, neo pixel 1, 2, 3, 4 will light up and remain lit till all 5 are lit up.
+
 Output when +1 score: playTone(player1 win)
+
 Output when win(all 5 neo pixels lit up): playTone victory sound / player 1 side will sparkle(blue) player 2 side will be black
 
 
 ## Input: D5(buttonR) - Player 2 score keeping button	
+
 Output: neo pixel 5-9 will flash green then neo pixel 5 will remain lit and every win after, neo pixel 6, 7, 8, 9 will light up and remain lit till all 5 are lit up. 
+
 Output when +1 score: playTone(player2 win)
+
 Output when win(all 5 neo pixels lit up): playTone victory sound / player 2 side will sparkle(white) player 1 side will be black
 
 ## Input: D7(switch) - after game ends or players want to restart switch interrupt mode: CHANGE
+
 Lights will restart and so will the game
