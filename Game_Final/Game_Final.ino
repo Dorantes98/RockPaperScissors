@@ -19,10 +19,12 @@ volatile int i = 0;
 
 void setup() {
   CircuitPlayground.begin();
-Serial.begin(9600);
+  Serial.begin(9600);
+  
   pinMode(switchPin, INPUT_PULLUP);
   pinMode(button1, INPUT_PULLDOWN);
   pinMode(button2, INPUT_PULLDOWN);
+  
   attachInterrupt(digitalPinToInterrupt(7), onOff, CHANGE);
   attachInterrupt(digitalPinToInterrupt(4), player1, FALLING);
   attachInterrupt(digitalPinToInterrupt(5), player2, FALLING);
