@@ -16,7 +16,7 @@ volatile int i = 0;
 int limiter=1;
 void setup() {
   CircuitPlayground.begin();
-
+Serial.begin(9600);
   pinMode(switchPin, INPUT_PULLUP);
   pinMode(button1, INPUT_PULLDOWN);
   pinMode(button2, INPUT_PULLDOWN);
@@ -28,6 +28,7 @@ void setup() {
 void loop() {
 
 if(button1Flag){      //if button1 pressed, light up player 1 side in order neo pixels 0-4
+  delay(5);
   CircuitPlayground.clearPixels();
   player1Control = j++;
   if(player1Control>5){
@@ -37,12 +38,19 @@ if(button1Flag){      //if button1 pressed, light up player 1 side in order neo 
   }
 
   if(switchFlag){
+    delay(5);
     CircuitPlayground.clearPixels();
     switchState = digitalRead(switchPin);
     switchFlag = 0;
+  player1Control = 0;
+  player2Control = 0;
+  limiter=1;
+  i = 0;
+  j = 0;
   }
 
 if(button2Flag){      //if button1 pressed, light up player 2 side in order neo pixels 0-4
+  delay(5);
   CircuitPlayground.clearPixels();
   player2Control = i++;
   if(player2Control>5){
@@ -52,11 +60,7 @@ if(button2Flag){      //if button1 pressed, light up player 2 side in order neo 
   }
 
 if(switchState){
-  player1Control = 0;
-  player2Control = 0;
-  limiter=1;
-
-}
+  
   switch(player1Control)
 {
   case 0:
@@ -87,7 +91,7 @@ if(switchState){
   default:
     break;
 }
-
+ Serial.println(player2Control);
   switch(player2Control)
 {
   case 0:
@@ -120,6 +124,7 @@ if(switchState){
 }
 
   }
+}
   
 
 // if(button2Flag){      //if button1 pressed, light up player 2 side in order neo pixels 0-4
