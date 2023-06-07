@@ -3,6 +3,7 @@
 int button1 = 4;
 int button2 = 5;
 int switchPin = 7;
+int limiter=1;
 
 volatile bool button1Flag = 0;
 volatile bool button2Flag = 0;
@@ -13,7 +14,9 @@ volatile int player1Control = 0;
 volatile int player2Control = 0;
 volatile int j = 0;
 volatile int i = 0;
-int limiter=1;
+
+
+
 void setup() {
   CircuitPlayground.begin();
 Serial.begin(9600);
@@ -42,11 +45,11 @@ if(button1Flag){      //if button1 pressed, light up player 1 side in order neo 
     CircuitPlayground.clearPixels();
     switchState = digitalRead(switchPin);
     switchFlag = 0;
-  player1Control = 0;
-  player2Control = 0;
-  limiter=1;
-  i = 0;
-  j = 0;
+    player1Control = 0;
+    player2Control = 0;
+    limiter=1;
+    i = 0;
+    j = 0;
   }
 
 if(button2Flag){      //if button1 pressed, light up player 2 side in order neo pixels 0-4
